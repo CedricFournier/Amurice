@@ -5,19 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
     <script type="module" src="./script.js"></script>
 </head>
 <body>
     <main>
-        <label>POOL</label>
-        <input class="inputarea" type="number" id="pool" required>
-        <label>APY</label>
-        <input class="inputarea" type="number" id="apy" required>
-        <button id="bcalculer">CALCULER</button>
-        <p>GAIN ANNUEL</p>
-        <p id="pgainannuel"></p>
-        <p>GAIN MENSUEL</p>
-        <p id="pgainmensuel"></p>
+        <div>
+            <label>POOL</label>
+            <input class="inputarea" type="number" id="pool" required>
+            <label>APY</label>
+            <input class="inputarea" type="number" id="apy" required>
+            <button id="bcalculer">CALCULER</button>
+            <p>GAIN ANNUEL</p>
+            <p id="pgainannuel"></p>
+            <p>GAIN MENSUEL</p>
+            <p id="pgainmensuel"></p>
+        </div>
+        <table class="tabdetail">
+            <tr>
+                <td>Mois</td>
+                <td>Gain</td>
+            </tr>    
+        </table>
     </main>
 </body>
 </html>
