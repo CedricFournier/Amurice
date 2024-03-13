@@ -1,52 +1,72 @@
 const pool = document.getElementById("pool");
 const apy = document.getElementById("apy");
+const frais = document.getElementById("frais");
+const mois = document.getElementById("mois");
 const bcalculer = document.getElementById("bcalculer");
-const pgainannuel = document.getElementById("pgainannuel");
-const pgainmensuel = document.getElementById("pgainmensuel");
+const errorchamps = document.getElementById("errorchamps")
+const bestinterest = document.getElementById("bestinterest");
 const tabdetail = document.querySelector(".tabdetail");
 const tabcompound = document.querySelector(".tabcompound");
 
 bcalculer.addEventListener("click", () => {
     const npool = pool.value;
     const napy = apy.value / 100;
-    const cfrais = npool * napy / 365
-    const aresult =  npool * napy - cfrais
-    const mresult =  aresult / 12
-    pgainannuel.innerHTML = aresult + "€"
-    pgainmensuel.innerHTML = mresult + "€"
-    detail(mresult)
-    detailcompound(npool, napy)
+    const nfrais = frais.value / 100;
+    if (npool === "") {
+        errorchamps.innerHTML = "Veuillez remplir le champs pool"
+    } else if (napy === 0) {
+        errorchamps.innerHTML = "Veuillez remplir le champs APY"
+    } else {
+        calbestinterest(npool, napy, nfrais)
+    }   
 });
 
-function detail (mresult) {
+function calbestinterest (npool, napy, nfrais) {
+    let tabinterest = []
     let i = 1;
-    for (i ; i < 13; i++) {
-        const tableau =  
-        `
-            <tr>
-                <td>${i}</td>
-                <td>${mresult * i + "€"}</td>
-            </tr>
-        ` 
-        tabdetail.insertAdjacentHTML("beforeend", tableau);
+    for (i ; i < 366; i++) {
+        const result = npool * Math.pow(1 + (napy / i - nfrais), i)
+        const object = {i: i, result: result}
+        tabinterest.push(object)
     };
+    const biginterest = tabinterest.slice().sort((evtA, evtB) =>
+    evtA.result > evtB.result ? -1 : 1 )[0];
+    datecompound(npool, napy, nfrais, biginterest)    
 }
 
-function detailcompound (npool, napy) {
-    const mtaux = napy / 12
-    const jtaux = napy / 365
-    const taux = mtaux - jtaux
+function datecompound (npool, napy, nfrais, biginterest) {
+    const besti = biginterest.i
+    const bestresult = biginterest.result
+    bestinterest.innerHTML = "vous devrez stake " + besti + " pour avoir le meilleur rendement soit " + bestresult.toFixed(2) + "€"
+    detailcompound(npool, napy, nfrais, besti)
+}
+
+function detailcompound (npool, napy, nfrais, besti) {
+    const mtaux = napy / besti
+    const taux = mtaux - nfrais
+    const restake = 365 / besti
+    const date = new Date()
     let i = 0;
-    for (i ; i < 12; i++) {
+    for (i ; i < besti; i++) {
+        const gainm = npool * taux * Math.pow(1 + (mtaux - nfrais), i);
+        const gainmc = npool * Math.pow(1 + (mtaux - nfrais), i + 1) - npool;
+        const poolc = npool * Math.pow(1 + (mtaux - nfrais), i + 1);
+        const date2 = addDaysToDate(date, restake * i)
         const tableau =  
         `
             <tr>
-                <td>${i + 1}</td>
-                <td>${npool * taux * Math.pow(1 + (mtaux - jtaux), i) + " €"}</td>
-                <td>${npool * Math.pow(1 + (mtaux - jtaux), i + 1) - npool + " €"}</td>
-                <td>${npool * Math.pow(1 + (mtaux - jtaux), i + 1) + " €"}</td>
+                <td>${date2.toLocaleDateString("fr")}</td>
+                <td>${gainm.toFixed(2) + " €"}</td>
+                <td>${gainmc.toFixed(2) + " €"}</td>
+                <td>${poolc.toFixed(2) + " €"}</td>
             </tr>
         ` 
         tabcompound.insertAdjacentHTML("beforeend", tableau);
     };
+}
+
+function addDaysToDate(date, days) {
+    var res = new Date(date);
+    res.setDate(res.getDate() + days);
+    return res;
 }

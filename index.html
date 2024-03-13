@@ -9,29 +9,30 @@
     <script type="module" src="./script.js"></script>
 </head>
 <body>
+    <header>
+        <h1>FARMERPOOLS TOOLS</h1>
+    </header>
     <main>
         <div>
             <label>POOL</label>
             <input class="inputarea" type="number" id="pool" required>
+            <span>€</span>
             <label>APY</label>
             <input class="inputarea" type="number" id="apy" required>
+            <span>%</span>
+            <label>Frais</label>
+            <input class="inputarea" type="number" id="frais" required>
+            <span>%</span>
             <button id="bcalculer">CALCULER</button>
-            <p>GAIN ANNUEL</p>
-            <p id="pgainannuel"></p>
-            <p>GAIN MENSUEL</p>
-            <p id="pgainmensuel"></p>
+            <p id="errorchamps"></p>
+            <h1 id="bestinterest"></h1>
         </div>
-        <table class="tabdetail">
-            <tr>
-                <td>Mois</td>
-                <td>Gain</td>
-            </tr>    
-        </table>
         <table class="tabcompound">
             <tr>
-                <td>Mois</td>
-                <td>Pool</td>
-                <td>Gain</td>
+                <td>Date d'injection</td>
+                <td>Résultat</td>
+                <td>Résultat cumuler</td>
+                <td>Pool cumuler</td>
             </tr>    
         </table>
     </main>
