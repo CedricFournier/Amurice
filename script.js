@@ -37,7 +37,7 @@ function calbestinterest (npool, napy, nfrais) {
 function datecompound (npool, napy, nfrais, biginterest) {
     const besti = biginterest.i
     const bestresult = biginterest.result
-    bestinterest.innerHTML = "vous devrez stake " + besti + " pour avoir le meilleur rendement soit " + bestresult.toFixed(2) + "€"
+    bestinterest.innerHTML = "vous devrez stake " + besti + "fois pour avoir le meilleur rendement soit " + bestresult.toFixed(2) + "€"
     detailcompound(npool, napy, nfrais, besti)
 }
 

@@ -13,19 +13,25 @@
         <h1>FARMERPOOLS TOOLS</h1>
     </header>
     <main>
-        <div>
+        <div class="divform">
             <label>POOL</label>
-            <input class="inputarea" type="number" id="pool" required>
-            <span>€</span>
+            <div>
+                <input class="inputarea" type="number" id="pool" required>
+                <span>€</span>
+            </div>
             <label>APY</label>
-            <input class="inputarea" type="number" id="apy" required>
-            <span>%</span>
+            <div>
+                <input class="inputarea" type="number" id="apy" required>
+                <span>%</span>
+            </div>
             <label>Frais</label>
-            <input class="inputarea" type="number" id="frais" required>
-            <span>%</span>
-            <button id="bcalculer">CALCULER</button>
+            <div>
+                <input class="inputarea" type="number" id="frais" required>
+                <span>%</span>
+            </div> 
             <p id="errorchamps"></p>
-            <h1 id="bestinterest"></h1>
+            <button id="bcalculer">CALCULER</button>      
+            <p id="bestinterest"></p>
         </div>
         <table class="tabcompound">
             <tr>
