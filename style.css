@@ -1,8 +1,22 @@
+body {
+    max-width: 1440px;
+    margin: 20px;
+}
+
 h1 {
     text-align: center;
+}
+
+input {
+    width: 253px;
+}
+
+button {
+    width: 200px;
 }
 
 .divform {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
