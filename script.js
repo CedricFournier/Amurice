@@ -25,7 +25,11 @@ bcalculer.addEventListener("click", () => {
 });
 
 bdlpdf.addEventListener("click", () => {
-    html2pdf().from(element).save()
+    const opt = {
+        margin: 20,
+        filename: 'best-coumpound.pdf'
+      };
+      html2pdf().set(opt).from(element).save();
 })
 
 function calbestinterest (npool, napy, nfrais) {
@@ -62,7 +66,7 @@ function detailcompound (npool, napy, nfrais, besti) {
         const date2 = addDaysToDate(date, restake * i)
         const tableau =  
         `
-            <tr>
+            <tr class="${"bgc" + i * 1}" >
                 <td>${date2.toLocaleDateString("fr")}</td>
                 <td>${gainm.toFixed(2) + " €"}</td>
                 <td>${gainmc.toFixed(2) + " €"}</td>
@@ -74,13 +78,14 @@ function detailcompound (npool, napy, nfrais, besti) {
     const label =
     `
         <tr>
-            <td>Date d'injection</td>
-            <td>Résultat</td>
-            <td>Résultat cumuler</td>
-            <td>Pool cumuler</td>
+            <th>Date d'injection</th>
+            <th>Résultat</th>
+            <th>Résultat cumuler</th>
+            <th>Pool cumuler</th>
         </tr>  
     ` 
     tabcompound.insertAdjacentHTML("afterbegin", label);
+    bdlpdf.style.display = "block"
 }
 
 function addDaysToDate(date, days) {

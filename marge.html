@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./marge.css">
+    <script type="module" src="./marge.js"></script>
+</head>
+<body>
+    <header>
+        <h1>FARMERPOOLS TOOLS</h1>
+        <a href="./index.html">Calcul des intérets composées</a>
+    </header>
+    <main>
+        <div>
+            <label>Prix achat</label>
+            <div>
+                <input class="inputarea" type="number" id="pachat" required>
+                <span>€</span>
+            </div>
+            <label>Prix vente</label>
+            <div>
+                <input class="inputarea" type="number" id="pvente" required>
+                <span>€</span>
+            </div>
+            <label>Conditionnement</label>
+            <div>
+                <input class="inputarea" type="number" id="conditionnement" required>
+                <span>KG/L</span>
+            </div> 
+            <label>Quantite</label>
+            <div>
+                <input class="inputarea" type="number" id="quantite" required>
+            </div>
+            <label>Cout transport</label>
+            <div>
+                <input class="inputarea" type="number" id="ctransport" required>
+                <span>€</span>
+            </div>
+            <label>Prime commercial</label>
+            <div>
+                <input class="inputarea" type="number" id="tcommercial" required>
+                <span>%</span>
+            </div>
+            <p id="errorchamps"></p>  
+            <button id="bcalculer">CALCULER</button>  
+        </div>
+            <p>Chiffre d'affaire</p>
+            <p id="chiffreaffaire"></p>
+            <p>Cout achat</p>
+            <p id="coutachat"></p>
+            <p>Poids</p>
+            <p id="poids"></p>
+            <p>Marge brut</p>
+            <p id="margebrut"></p>
+            <p>Impot 12,3%</p>
+            <p id="impot"></p>
+            <p>Prime commercial</p>
+            <p id="pcommercial"></p>
+            <p>Marge net</p>
+            <p id="margenet"></p>
+    </main>
+</body>
+</html>
