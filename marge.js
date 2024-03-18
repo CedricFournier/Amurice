@@ -35,5 +35,11 @@ breset.addEventListener("click", () => {
     quantite.value = "";
     ctransport.value = "";
     tcommercial.value = "";
+    chiffreaffaire.innerHTML = "0€";
+    coutachat.innerHTML = "0€";
+    margebrut.innerHTML = "0€";
+    impot.innerHTML = "0€";
+    pcommercial.innerHTML = "0€";
+    margenet.innerHTML = "0€";
 
 })
